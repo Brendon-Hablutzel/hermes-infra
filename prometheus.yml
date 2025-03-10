@@ -2,6 +2,6 @@ global:
   scrape_interval: 15s
 
 scrape_configs:
-  - job_name: "hermes"
+  - job_name: "backend"
     static_configs:
-      - targets: ["hermes:8080"]
+      - targets: ["backend:8080"]
