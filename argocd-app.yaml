@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hermes-app
+spec:
+  project: default
+  source:
+    path: k8s
+    repoURL: "https://github.com/Brendon-Hablutzel/hermes-infra"
+    targetRevision: HEAD
+  destination:
+    # namespace: default
+    server: "https://kubernetes.default.svc"

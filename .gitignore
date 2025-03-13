@@ -1,2 +1,6 @@
 .env
+.base64.env
 projects.json
+projects.yaml
+.vscode
+backend-secret.yaml

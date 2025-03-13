@@ -6,7 +6,7 @@ services:
     env_file: 
       - .env
     volumes:
-      - ./projects.json:/app/projects.json
+      - ./projects.yaml:/app/projects.yaml
     networks:
       - monitoring
 

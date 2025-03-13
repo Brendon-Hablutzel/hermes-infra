@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: projects-config
+  namespace: hermes
+data:
+  projects.yaml: |
+    - name: ncsuguessr
+      deployments:
+        - name: staging
+          resources:
+            - name: postgres
+              identifier: ncsuguessr-postgresdatabase-staging
+              type: aws-rds
+            - name: cluster
+              identifier: ncsuguessr-BackendCluster-staging
+              type: aws-ecs
+            - name: load-balancer
+              identifier: ncsuguessr-BackendELB-staging
+              type: aws-elb
+            - name: frontend
+              identifier: ncsuguessr
+              type: cloudflare-pages
+    - name: segmenting
+      deployments:
+        - name: staging
+          resources:
+            - name: api-gateway
+              identifier: segmenting-ApiGateway-staging
+              type: aws-apigw
