@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: hermes-backend
-          image: ghcr.io/brendon-hablutzel/hermes:latest
+          image: ghcr.io/brendon-hablutzel/hermes:linux-amd64
           env:
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
