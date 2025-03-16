@@ -26,7 +26,7 @@ spec:
           volumeMounts:
             - name: prometheus-config
               mountPath: /etc/prometheus
-            - name: prometheus-data
+            - name: prometheus-storage
               mountPath: /prometheus
           # resources:
           #   requests:
@@ -35,42 +35,9 @@ spec:
           #   limits:
           #     memory: "512Mi"
           #     cpu: "1"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: prometheus
-  namespace: monitoring
-spec:
-  ports:
-    - port: 9090
-      targetPort: 9090
-      name: web
-  selector:
-    app: prometheus
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: prometheus-config
-  namespace: monitoring
-data:
-  prometheus.yml: |
-    global:
-      scrape_interval: 15s
-    scrape_configs:
-      - job_name: 'node-exporter'
-        static_configs:
-          - targets: ['node-exporter.monitoring.svc.cluster.local:9100']
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: prometheus-data
-  namespace: monitoring
-spec:
-  accessModes:
-    - ReadWriteOnce
-  # resources:
-  #   requests:
-  #     storage: 1Gi
+      volumes:
+        - name: config-volume
+          configMap:
+            name: prometheus-config
+        - name: prometheus-storage
+          emptyDir: {}
