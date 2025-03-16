@@ -53,6 +53,7 @@ spec:
               subPath: projects.yaml
           ports:
             - containerPort: 8080
+          imagePullPolicy: Always
       volumes:
         - name: config-volume
           configMap:

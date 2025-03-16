@@ -21,3 +21,4 @@ spec:
               value: "http://backend-service:8080"
           ports:
             - containerPort: 3000
+          imagePullPolicy: Always
