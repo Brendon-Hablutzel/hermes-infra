@@ -13,3 +13,5 @@ Projects should be specified in `projects.yaml` in a format like the following:
           identifier: ""
           type: ""
 ```
+
+[how to set up grafana state timeline](https://stackoverflow.com/questions/68887416/grafana-state-timeline-panel-with-values-states-supplied-by-label)
